@@ -5,6 +5,7 @@
   "author": "twesix",
   "license": "MIT",
   "dependencies": {
+    "mocha": "^3.5.3",
     "sequelize": "^4.8.4",
     "validator": "^8.2.0"
   }
