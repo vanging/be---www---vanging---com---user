@@ -1,0 +1,11 @@
+{
+  "name": "vanging-user",
+  "version": "1.0.0",
+  "private": true,
+  "author": "twesix",
+  "license": "MIT",
+  "dependencies": {
+    "sequelize": "^4.8.4",
+    "validator": "^8.2.0"
+  }
+}
