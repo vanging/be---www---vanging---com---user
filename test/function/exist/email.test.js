@@ -6,6 +6,5 @@ describe('[ function/exist/email ]', function()
     it('default()', async function()
     {
         let result = await email('a.b@c.com');
-        assert(!result);
     });
 });

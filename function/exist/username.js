@@ -1,5 +1,7 @@
-module.exports.handler = function(event, context, callback)
+module.exports= async function(username)
 {
-    console.log('invalid_path');
-    callback(null, 'invalid_path');
+    const model_profile = await require('../../lib/persistence/model/profile')();
+
+    const profile = await model_profile.findOne({ where: {username: username}});
+    return profile !== null;
 };
