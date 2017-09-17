@@ -4,6 +4,6 @@ describe('[ lib/persistence/index ]', function()
 {
     it('getConnection()', function()
     {
-        return sequelize.getConnection();
+        sequelize.getConnection();
     })
 });
