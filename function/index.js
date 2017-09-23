@@ -1,5 +1,12 @@
-module.exports.handler = function(event, context, callback)
+const koa = require('../koa');
+
+module.exports = async function(ctx, next)
 {
-    console.log('invalid_path');
-    callback(null, 'invalid_path');
+    ctx.body =
+        {
+            status: 'ok',
+            message: 'it works',
+        };
 };
+
+const app = koa(module.exports, 60000);
