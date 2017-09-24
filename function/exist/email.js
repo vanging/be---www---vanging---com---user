@@ -1,12 +1,34 @@
 const util = require('../../lib/util');
+const persistence = require('../../lib/persistence/action');
+const koa = require('../../koa');
 
-module.exports= async function(email)
+module.exports= async function(ctx)
 {
-    const model_profile = await require('../../lib/persistence/model/profile')();
-    if( ! util.isEmail(email))
+    const query = ctx.query;
+    if( ! (query.email && util.isEmail(query.email)))
     {
-        return false;
+        ctx.body =
+            {
+                status: 'param_wrong'
+            };
+        return;
     }
-    const profile = await model_profile.findOne({ where: {email: email}});
-    return profile !== null;
+    if(persistence.findUidByEmail(query.email) === null)
+    {
+        ctx.body =
+            {
+                status: 'ok',
+                message: false
+            };
+    }
+    else
+    {
+        ctx.body =
+            {
+                status: 'ok',
+                message: true
+            };
+    }
 };
+
+const app = koa(module.exports, 60001);

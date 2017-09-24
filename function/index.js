@@ -5,7 +5,7 @@ module.exports = async function(ctx, next)
     ctx.body =
         {
             status: 'ok',
-            message: 'it works',
+            message: ctx.query,
         };
 };
 
