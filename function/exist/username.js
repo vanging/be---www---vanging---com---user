@@ -1,7 +1,34 @@
-module.exports= async function(username)
-{
-    const model_profile = await require('../../lib/persistence/model/profile')();
+const util = require('../../lib/util');
+const persistence = require('../../lib/persistence/action');
+const koa = require('../../koa');
 
-    const profile = await model_profile.findOne({ where: {username: username}});
-    return profile !== null;
+module.exports= async function(ctx)
+{
+    const query = ctx.query;
+    if( ! (query.username))
+    {
+        ctx.body =
+            {
+                status: 'param_wrong'
+            };
+        return;
+    }
+    if(persistence.findUidByUsername(query.username) === null)
+    {
+        ctx.body =
+            {
+                status: 'ok',
+                message: false
+            };
+    }
+    else
+    {
+        ctx.body =
+            {
+                status: 'ok',
+                message: true
+            };
+    }
 };
+
+const app = koa(module.exports, 60002);
