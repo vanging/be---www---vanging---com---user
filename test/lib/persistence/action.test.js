@@ -2,6 +2,26 @@ const action = require('../../../lib/persistence/action');
 const assert = require('assert');
 describe('[ lib/persistence/action ]', function()
 {
+
+    it('signInByPassword()', async function()
+    {
+        this.timeout(20000);
+        let ok = await action.signInByPassword('username', 'password');
+        assert(ok);
+        ok = await action.signInByPassword('email', 'password');
+        assert(ok);
+        ok = await action.signInByPassword('tel', 'password');
+        assert(ok);
+        ok = await action.signInByPassword('usernamee', 'password');
+        assert( ! ok);
+        ok = await action.signInByPassword('emaill', 'password');
+        assert( ! ok);
+        ok = await action.signInByPassword('tell', 'password');
+        assert( ! ok);
+        ok = await action.signInByPassword('null', 'password');
+        assert( ! ok);
+    });
+
     it('findUidByUsername()', async function()
     {
         const uid = await action.findUidByUsername('username');
