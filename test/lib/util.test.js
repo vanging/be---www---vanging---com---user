@@ -15,4 +15,15 @@ describe('[ util ]', function()
         assert(util.isTel('12345678900'));
         assert( ! util.isTel('abc'));
     });
+
+    it('generateUid()', function()
+    {
+        let n = 100;
+        while(n > 0)
+        {
+            console.log(util.generateUid());
+            assert(util.generateUid().length === 36);
+            n--;
+        }
+    });
 });
