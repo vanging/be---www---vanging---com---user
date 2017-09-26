@@ -13,7 +13,7 @@ module.exports= async function(ctx)
             };
         return;
     }
-    if(persistence.findUidByUsername(query.username) === null)
+    if(await persistence.findUidByUsername(query.username) === null)
     {
         ctx.body =
             {

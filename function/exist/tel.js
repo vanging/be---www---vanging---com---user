@@ -5,7 +5,7 @@ const koa = require('../../koa');
 module.exports= async function(ctx)
 {
     const query = ctx.query;
-    if( ! (query.email && util.isEmail(query.email)))
+    if( ! (query.tel && util.isTel(query.tel)))
     {
         ctx.body =
             {
@@ -13,7 +13,7 @@ module.exports= async function(ctx)
             };
         return;
     }
-    if(await persistence.findUidByEmail(query.email) === null)
+    if(await persistence.findUidByTel(query.tel) === null)
     {
         ctx.body =
             {
@@ -31,4 +31,4 @@ module.exports= async function(ctx)
     }
 };
 
-const app = koa(module.exports, 60001);
+const app = koa(module.exports, 60005);
