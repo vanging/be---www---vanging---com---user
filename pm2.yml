@@ -1,0 +1,5 @@
+apps:
+  - script: ./function/exist/email.js
+    name: /exist/email
+  - script: ./function/exist/username.js
+    name: /exist/username
