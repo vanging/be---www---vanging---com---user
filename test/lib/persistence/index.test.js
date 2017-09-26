@@ -2,8 +2,8 @@ const sequelize = require('../../../lib/persistence/index');
 
 describe('[ lib/persistence/index ]', function()
 {
-    it('getConnection()', function()
+    it('getConnection()', async function()
     {
-        sequelize.getConnection();
+        return sequelize.getConnection();
     })
 });

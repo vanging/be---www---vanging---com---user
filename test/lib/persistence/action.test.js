@@ -2,6 +2,20 @@ const action = require('../../../lib/persistence/action');
 const assert = require('assert');
 describe('[ lib/persistence/action ]', function()
 {
+    it('signUpByEmail()', async function()
+    {
+        assert(await action.signUpByEmail(`${Math.random()}-test-email`, `${Math.random()}-test-password`));
+        try
+        {
+            await action.signUpByEmail(`test-email`, `test-password`);
+            await action.signUpByEmail(`test-email`, `test-password`);
+            assert(false);
+        }
+        catch(e)
+        {
+            console.log(e);
+        }
+    });
 
     it('signInByPassword()', async function()
     {
