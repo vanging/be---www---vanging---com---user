@@ -1,5 +1,35 @@
 apps:
+  - script: ./function/activate/email.js
+    name: /activate/email
+  - script: ./function/activate/tel.js
+    name: /activate/tel
+  - script: ./function/bind/github.js
+    name: /bind/github
+  - script: ./function/bind/qq.js
+    name: /bind/qq
+  - script: ./function/bind/wx.js
+    name: /bind/wx
   - script: ./function/exist/email.js
     name: /exist/email
   - script: ./function/exist/username.js
     name: /exist/username
+  - script: ./function/sign/in/github.js
+    name: /sign/in/github
+  - script: ./function/sign/in/password.js
+    name: /sign/in/password
+  - script: ./function/sign/in/qq.js
+    name: /sign/in/qq
+  - script: ./function/sign/in/wx.js
+    name: /sign/in/wx
+  - script: ./function/sign/up/email.js
+    name: /sign/up/email
+  - script: ./function/unbind/github.js
+    name: /unbind/github
+  - script: ./function/unbind/qq.js
+    name: /unbind/qq
+  - script: ./function/unbind/wx.js
+    name: /unbind/wx
+  - script: ./function/update/nickname.js
+    name: /update/nickname
+  - script: ./function/update/password.js
+    name: /update/password
