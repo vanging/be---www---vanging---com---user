@@ -5,9 +5,7 @@ describe('[ lib/cache/action/activate/email ]', function()
     let session = null;
     it('createSessionFromEmail()', async function()
     {
-        session = await email.createSessionFromEmail(`test_email_${Math.random()}`);
-        console.log(session);
-        return session;
+        await email.createSessionFromEmail(`278227739@qq.com`);
     });
     it('getEmailFromSession()', async function()
     {
