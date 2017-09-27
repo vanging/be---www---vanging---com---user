@@ -2,6 +2,12 @@ const action = require('../../../lib/persistence/action');
 const assert = require('assert');
 describe('[ lib/persistence/action ]', function()
 {
+
+    it('activateEmail()', async function()
+    {
+        assert(await action.activateEmail(`email`));
+    });
+
     it('signUpByEmail()', async function()
     {
         assert(await action.signUpByEmail(`${Math.random()}-test-email`, `${Math.random()}-test-password`));
