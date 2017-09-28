@@ -25,7 +25,7 @@ module.exports= async function(ctx)
     else
     {
         await persistence.activateEmail(email);
-        // await _email.deleteSession(query.session);
+        await _email.deleteSession(query.session);
         ctx.body =
             {
                 status: 'ok',

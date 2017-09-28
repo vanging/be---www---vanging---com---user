@@ -1,6 +1,7 @@
 const util = require('../../../lib/util');
 const persistence = require('../../../lib/persistence/action');
 const koa = require('../../../koa');
+const _email = require('../../../lib/cache/action/activate/email');
 
 module.exports= async function(ctx)
 {
@@ -16,6 +17,7 @@ module.exports= async function(ctx)
     try
     {
         const result = await persistence.signUpByEmail(query.email, query.password);
+        await _email.createSessionFromEmail(query.email);
         ctx.body =
             {
                 status: 'ok',
