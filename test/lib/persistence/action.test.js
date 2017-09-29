@@ -2,6 +2,25 @@ const action = require('../../../lib/persistence/action');
 const assert = require('assert');
 describe('[ lib/persistence/action ]', function()
 {
+    it('updateEmail()', async function()
+    {
+        await action.updateEmail(`email`, 'uid');
+    });
+
+    it('updateNickname()', async function()
+    {
+        await action.updateNickname(`nickname`, 'uid');
+    });
+
+    it('updatePassword()', async function()
+    {
+        await action.updatePassword(`password`, 'uid');
+    });//////
+
+    it('updateTel()', async function()
+    {
+        await action.updateTel(`tel`, 'uid');
+    });
 
     it('activateEmail()', async function()
     {
@@ -47,6 +66,14 @@ describe('[ lib/persistence/action ]', function()
         const uid = await action.findUidByUsername('username');
         assert(uid === 'uid');
         const uid1 = await action.findUidByUsername('null');
+        assert(uid1 === null);
+    });
+
+    it('findUidByNickname()', async function()
+    {
+        const uid = await action.findUidByNickname('nickname');
+        assert(uid === 'uid');
+        const uid1 = await action.findUidByNickname('null');
         assert(uid1 === null);
     });
 
