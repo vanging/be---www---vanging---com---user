@@ -9,4 +9,4 @@ module.exports = async function(ctx, next)
         };
 };
 
-const app = koa(module.exports, 60000);
+const app = koa(module.exports, 61000);
