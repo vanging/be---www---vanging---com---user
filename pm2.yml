@@ -1,8 +1,6 @@
 apps:
   - script: ./function/activate/email.js
     name: /activate/email
-  - script: ./function/activate/tel.js
-    name: /activate/tel
   - script: ./function/bind/github.js
     name: /bind/github
   - script: ./function/bind/qq.js
@@ -11,6 +9,10 @@ apps:
     name: /bind/wx
   - script: ./function/exist/email.js
     name: /exist/email
+  - script: ./function/exist/nickname.js
+    name: /exist/nickname
+  - script: ./function/exist/tel.js
+    name: /exist/tel
   - script: ./function/exist/username.js
     name: /exist/username
   - script: ./function/sign/in/github.js
@@ -29,7 +31,11 @@ apps:
     name: /unbind/qq
   - script: ./function/unbind/wx.js
     name: /unbind/wx
+  - script: ./function/update/email.js
+    name: /update/email
   - script: ./function/update/nickname.js
     name: /update/nickname
   - script: ./function/update/password.js
     name: /update/password
+  - script: ./function/update/tel.js
+    name: /update/tel

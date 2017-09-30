@@ -1,11 +1,11 @@
-const util = require('../../lib/util');
+const session = require('../../middleware/login/session');
 const persistence = require('../../lib/persistence/action');
 const koa = require('../../koa');
 
 module.exports= async function(ctx)
 {
     const query = ctx.query;
-    if( ! (query.username))
+    if( ! (query.password))
     {
         ctx.body =
             {
@@ -13,22 +13,22 @@ module.exports= async function(ctx)
             };
         return;
     }
-    if(await persistence.findUidByUsername(query.username) === null)
+    try
     {
+        await persistence.updatePassword(query.password, ctx.state.uid);
         ctx.body =
             {
                 status: 'ok',
-                message: false
             };
     }
-    else
+    catch(e)
     {
+        console.log(e);
         ctx.body =
             {
-                status: 'ok',
-                message: true
-            };
+                status: 'db_error'
+            }
     }
 };
 
-const app = koa(module.exports, 61630);
+const app = koa(module.exports, 61630, [session]);

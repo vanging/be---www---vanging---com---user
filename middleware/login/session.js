@@ -22,6 +22,6 @@ module.exports= async function(ctx, next)
     else
     {
         ctx.state.uid = uid;
-        next();
+        await next();
     }
 };

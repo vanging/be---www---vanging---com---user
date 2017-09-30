@@ -1,3 +1,4 @@
+const session = require('../../middleware/login/session');
 const persistence = require('../../lib/persistence/action');
 const koa = require('../../koa');
 
@@ -12,22 +13,22 @@ module.exports= async function(ctx)
             };
         return;
     }
-    if(await persistence.findUidByUsername(query.username) === null)
+    try
     {
+        await persistence.updateNickname(query.nickname, ctx.state.uid);
         ctx.body =
             {
                 status: 'ok',
-                message: false
             };
     }
-    else
+    catch(e)
     {
+        console.log(e);
         ctx.body =
             {
-                status: 'ok',
-                message: true
-            };
+                status: 'db_error'
+            }
     }
 };
 
-const app = koa(module.exports, 61620);
+const app = koa(module.exports, 61620, [session]);
