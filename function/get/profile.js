@@ -1,26 +1,17 @@
 const session = require('../../middleware/login/session');
 const persistence = require('../../lib/persistence/action');
 const koa = require('../../koa');
-const util = require('../../lib/util');
 const port = require('../port');
 
 module.exports= async function(ctx)
 {
-    const query = ctx.query;
-    if( ! util.isEmail(query.email || ''))
-    {
-        ctx.body =
-            {
-                status: 'param_wrong'
-            };
-        return;
-    }
     try
     {
-        await persistence.updateEmail(query.email, ctx.state.uid);
+        const profile = await persistence.findProfileFromUid(ctx.state.uid);
         ctx.body =
             {
                 status: 'ok',
+                message: profile
             };
     }
     catch(e)
@@ -33,4 +24,4 @@ module.exports= async function(ctx)
     }
 };
 
-const app = koa(module.exports, port.update.email, [session]);
+const app = koa(module.exports, port.get.profile, [session]);

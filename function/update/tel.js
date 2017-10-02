@@ -2,6 +2,7 @@ const session = require('../../middleware/login/session');
 const persistence = require('../../lib/persistence/action');
 const koa = require('../../koa');
 const util = require('../../lib/util');
+const port = require('../port');
 
 module.exports= async function(ctx)
 {
@@ -32,4 +33,4 @@ module.exports= async function(ctx)
     }
 };
 
-const app = koa(module.exports, 61640, [session]);
+const app = koa(module.exports, port.update.tel, [session]);

@@ -2,6 +2,7 @@ const util = require('../../../lib/util');
 const persistence = require('../../../lib/persistence/action');
 const koa = require('../../../koa');
 const _email = require('../../../lib/cache/action/activate/email');
+const port = require('../../port');
 
 module.exports= async function(ctx)
 {
@@ -35,4 +36,4 @@ module.exports= async function(ctx)
     }
 };
 
-const app = koa(module.exports, 61421);
+const app = koa(module.exports, port.sign.up.email);

@@ -2,6 +2,15 @@ const action = require('../../../lib/persistence/action');
 const assert = require('assert');
 describe('[ lib/persistence/action ]', function()
 {
+
+    it('findProfileFromUid()', async function()
+    {
+        let profile = await action.findProfileFromUid('uid');
+        console.log(profile);
+        profile = await action.findProfileFromUid('uidd');
+        console.log(profile);
+    });
+
     it('updateEmail()', async function()
     {
         await action.updateEmail(`email`, 'uid');
